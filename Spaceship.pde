@@ -1,4 +1,4 @@
-class Spaceship extends Floater//extends Floater  
+public class Spaceship extends Floater//extends Floater  
 {   
     private double myMouseAngle;
     public Spaceship(){
@@ -45,6 +45,9 @@ class Spaceship extends Floater//extends Floater
     public int getColor(){return myColor;}
     public double getMouseAngle(){return myMouseAngle;}
     public double getPointAngle(){return myPointDirection;}
+    public double getSpeedX(){return myDirectionX;}
+    public double getSpeedY(){return myDirectionY;}
+
     public void setX(double x){myCenterX=x;}
     public void setY(double y){myCenterY=y;}
     public void setColor(int col){myColor = col;}
