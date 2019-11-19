@@ -41,7 +41,7 @@ public void draw()
   	}
   	if(shootPressed==true){
   		Bullet calvin = new Bullet(bob.getX(),bob.getY(),bob.getSpeedX(),bob.getSpeedY(),bob.getPointAngle());
-  		if(frameCount%(FRAME_RATE/8)==0){
+  		if(frameCount%(FRAME_RATE/15)==0){
   			bullets.add(calvin);
   		}
   	}
