@@ -11,8 +11,8 @@ public class Bullet extends Floater
 	}
 	public void shoot(){
 		double rads = myPointDirection*(Math.PI/180);
-		myCenterX+=myDirectionX+10*Math.cos(rads)+14*Math.cos(rads);
-		myCenterY+=myDirectionY+10*Math.sin(rads);
+		myCenterX+=myDirectionX+40*Math.cos(rads)+14*Math.cos(rads);
+		myCenterY+=myDirectionY+40*Math.sin(rads);
 	}
 	public void show(){
 		fill(255);

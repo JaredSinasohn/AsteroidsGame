@@ -7,14 +7,17 @@ boolean boostPressed = false;
 Spaceship bob;
 Star[] bimbo = new Star[1000];
 ArrayList <Bullet> bullets;
+ArrayList <Asteroid> theAsteroids;
 int FRAME_RATE = 30;
+int BACKGROUND_SIZE=700;
 public void setup() 
 {
-	size(800,800);
+	size(700,700);
 	bob = new Spaceship();
 	bullets = new ArrayList <Bullet>();
-	bob.setX(400);
-  	bob.setY(400);
+	theAsteroids = new ArrayList <Asteroid>();
+	bob.setX(BACKGROUND_SIZE/2);
+  	bob.setY(BACKGROUND_SIZE/2);
   	for(int i = 0; i<1000; i++){
 		bimbo[i] = new Star();
 	}
@@ -31,28 +34,38 @@ public void draw()
   	bob.show();
   	bob.hyperSpace(enterPressed);
   	if(rightPressed == true){
-  		bob.turn(6*2);
+  		bob.turn(9);
   	}
   	if(leftPressed==true){
-  		bob.turn(-6*2);
+  		bob.turn(-9);
   	}
   	if(boostPressed==true){
-  		bob.accelerate(.25*2);
+  		bob.accelerate(.25);
   	}
   	if(shootPressed==true){
   		Bullet calvin = new Bullet(bob.getX(),bob.getY(),bob.getSpeedX(),bob.getSpeedY(),bob.getPointAngle());
-  		if(frameCount%(FRAME_RATE/15)==0){
+  		if(bullets.size()==0){
   			bullets.add(calvin);
   		}
   	}
   	for(int i = 0; i<bullets.size(); i++){
   		bullets.get(i).shoot();
   		bullets.get(i).show();
-  		if((bullets.get(i).getX()>800||bullets.get(i).getX()<0)||(bullets.get(i).getY()>800||bullets.get(i).getY()<0)){
+  		if((bullets.get(i).getX()>BACKGROUND_SIZE||bullets.get(i).getX()<0)||(bullets.get(i).getY()>BACKGROUND_SIZE||bullets.get(i).getY()<0)){
   			bullets.remove(i);
   		}
   	}
-
+  	Asteroid deimos = new Asteroid();
+  	if(theAsteroids.size()<5){
+  		theAsteroids.add(deimos);
+  	}
+  	for(int i=0; i<theAsteroids.size(); i++){
+  		theAsteroids.get(i).move();
+  		theAsteroids.get(i).show();
+  		//if((theAsteroids.get(i).getX()<=0||theAsteroids.get(i).getX()>=BACKGROUND_SIZE)||(theAsteroids.get(i).getX()<=0||theAsteroids.get(i).getX()>=BACKGROUND_SIZE)){
+  			//theAsteroids.remove(i);
+  		//}
+  	}
 }
 public void keyPressed(){
 	if(key==100){
