@@ -3,6 +3,7 @@ public class Asteroid extends Floater{
 	private int rand = (int)(Math.random()*10);
 	Asteroid(){
 		myRotSpeed=(int)(Math.random()*10);
+		rand = (int)(Math.random()*10);
 		myColor=255;
 		myCenterX = Math.random()*BACKGROUND_SIZE;
 		myCenterY = Math.random()*BACKGROUND_SIZE;
@@ -11,8 +12,8 @@ public class Asteroid extends Floater{
 		//xCorners = new int[8];
 		//yCorners = new int[8];
 		corners = 8;
-		xCorners = new int[]{rand+15,rand+5,rand-5,rand-15,rand-15,rand-5,rand+5,rand+15};
-		yCorners = new int[]{rand-5,rand-10,rand-10,rand-5,rand+5,rand+10,rand+10,rand+5};
+		xCorners = new int[]{(int)(Math.random()*10)+15,(int)(Math.random()*10)+5,(int)(Math.random()*10)-5,(int)(Math.random()*10)-15,(int)(Math.random()*10)-15,(int)(Math.random()*10)-5,(int)(Math.random()*10)+5,(int)(Math.random()*10)+15};
+		yCorners = new int[]{(int)(Math.random()*10)-5,(int)(Math.random()*10)-10,(int)(Math.random()*10)-10,(int)(Math.random()*10)-5,(int)(Math.random()*10)+5,(int)(Math.random()*10)+10,(int)(Math.random()*10)+10,(int)(Math.random()*10)+5};
 		/*xCorners[0] = 15;
     	yCorners[0] = -5;
     	xCorners[1] = 5;
