@@ -1,9 +1,11 @@
 public class Asteroid extends Floater{
 	private int myRotSpeed;
+	private int sizMult;
 	private int rand = (int)(Math.random()*10);
 	Asteroid(){
 		myRotSpeed=(int)(Math.random()*10);
 		rand = (int)(Math.random()*10);
+		sizMult = 2;
 		myColor=255;
 		myCenterX = Math.random()*BACKGROUND_SIZE;
 		myCenterY = Math.random()*BACKGROUND_SIZE;
@@ -12,8 +14,8 @@ public class Asteroid extends Floater{
 		//xCorners = new int[8];
 		//yCorners = new int[8];
 		corners = 8;
-		xCorners = new int[]{(int)(Math.random()*10)+15,(int)(Math.random()*10)+5,(int)(Math.random()*10)-5,(int)(Math.random()*10)-15,(int)(Math.random()*10)-15,(int)(Math.random()*10)-5,(int)(Math.random()*10)+5,(int)(Math.random()*10)+15};
-		yCorners = new int[]{(int)(Math.random()*10)-5,(int)(Math.random()*10)-10,(int)(Math.random()*10)-10,(int)(Math.random()*10)-5,(int)(Math.random()*10)+5,(int)(Math.random()*10)+10,(int)(Math.random()*10)+10,(int)(Math.random()*10)+5};
+		xCorners = new int[]{((int)(Math.random()*10)+15)*sizMult,((int)(Math.random()*10)+5)*sizMult,((int)(Math.random()*10)-5)*sizMult,((int)(Math.random()*10)-15)*sizMult,((int)(Math.random()*10)-15)*sizMult,((int)(Math.random()*10)-5)*sizMult,((int)(Math.random()*10)+5)*sizMult,((int)(Math.random()*10)+15)*sizMult};
+		yCorners = new int[]{((int)(Math.random()*10)-5)*sizMult,((int)(Math.random()*10)-10)*sizMult,((int)(Math.random()*10)-10)*sizMult,((int)(Math.random()*10)-5)*sizMult,((int)(Math.random()*10)+5)*sizMult,((int)(Math.random()*10)+10)*sizMult,((int)(Math.random()*10)+10)*sizMult,((int)(Math.random()*10)+5)*sizMult};
 		/*xCorners[0] = 15;
     	yCorners[0] = -5;
     	xCorners[1] = 5;

@@ -5,10 +5,11 @@ boolean shootPressed = false;
 boolean enterPressed = false;
 boolean boostPressed = false;
 Spaceship bob;
+int sizMult = 2;
 Star[] bimbo = new Star[1000];
 ArrayList <Bullet> bullets;
 ArrayList <Asteroid> theAsteroids;
-int FRAME_RATE = 30;
+int FRAME_RATE = 60;
 int BACKGROUND_SIZE=700;
 public void setup() 
 {
@@ -26,13 +27,17 @@ public void setup()
 public void draw() 
 {
 	background(0);
+	//stars
 	for(int i = 0; i<1000; i++){
 		bimbo[i].show();
 	}
+	//spaceship functions
   	bob.setColor(255);
   	bob.move();
   	bob.show();
-  	bob.hyperSpace(enterPressed);
+  	if(enterPressed == true && frameCount%FRAME_RATE==0){
+  		bob.hyperSpace();
+  	}
   	if(rightPressed == true){
   		bob.turn(9);
   	}
@@ -42,12 +47,14 @@ public void draw()
   	if(boostPressed==true){
   		bob.accelerate(.25);
   	}
+  	//spawning bullets, only 1 on the screen at a time
   	if(shootPressed==true){
   		Bullet calvin = new Bullet(bob.getX(),bob.getY(),bob.getSpeedX(),bob.getSpeedY(),bob.getPointAngle());
   		if(bullets.size()==0){
   			bullets.add(calvin);
   		}
   	}
+  	//moving bullets
   	for(int i = 0; i<bullets.size(); i++){
   		bullets.get(i).shoot();
   		bullets.get(i).show();
@@ -55,6 +62,7 @@ public void draw()
   			bullets.remove(i);
   		}
   	}
+  	//spawning asteroids
   	Asteroid deimos = new Asteroid();
   	if(theAsteroids.size()<5){
   		theAsteroids.add(deimos);
@@ -65,6 +73,27 @@ public void draw()
   		//if((theAsteroids.get(i).getX()<=0||theAsteroids.get(i).getX()>=BACKGROUND_SIZE)||(theAsteroids.get(i).getX()<=0||theAsteroids.get(i).getX()>=BACKGROUND_SIZE)){
   			//theAsteroids.remove(i);
   		//}
+  	}
+  	//checking collision between bullets and asteroids
+  	double dist;
+  	for(int i=0; i<bullets.size(); i++){
+  		for(int j=0; j<theAsteroids.size(); j++){
+  			dist = abs(dist((float)bullets.get(i).getX(),(float)bullets.get(i).getY(),(float)theAsteroids.get(j).getX(),(float)theAsteroids.get(j).getY()));
+  			if(dist<25*sizMult){
+  				theAsteroids.remove(j);
+  				bullets.remove(i);
+  				break;
+  			}
+  		}
+  	}
+  	for(int j=0; j<theAsteroids.size(); j++){
+  		dist = abs(dist((float)bob.getX(),(float)bob.getY(),(float)theAsteroids.get(j).getX(),(float)theAsteroids.get(j).getY()));
+  		if(dist<20*sizMult){
+  			theAsteroids.remove(j);
+  			bob.hyperSpace();
+  			background(255,0,0);
+  			break;
+  		}
   	}
 }
 public void keyPressed(){

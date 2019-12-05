@@ -29,15 +29,13 @@ public class Spaceship extends Floater//extends Floater
     	//yCorners[10] = -4;
     	myMouseAngle = Math.atan2((myCenterX-mouseX),(myCenterY-mouseY));
     }
-    public void hyperSpace(boolean enter){
+    public void hyperSpace(){
     	for(int i = 0; i<1; i++){
-    		if(enter==true){
-    			myDirectionX=0;
-    			myDirectionY=0;
-    			myCenterX=(Math.random()*350)+200;
-    			myCenterY=(Math.random()*350)+200;
-    			myPointDirection=Math.random()*360;
-    		}
+    		myDirectionX=0;
+    		myDirectionY=0;
+    		myCenterX=(Math.random()*350)+200;
+    		myCenterY=(Math.random()*350)+200;
+    		myPointDirection=Math.random()*360;
     	}
     }
     public double getX(){return (double)myCenterX;}
