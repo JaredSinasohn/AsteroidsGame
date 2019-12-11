@@ -5,7 +5,7 @@ boolean shootPressed = false;
 boolean enterPressed = false;
 boolean boostPressed = false;
 Spaceship bob;
-int sizMult = 2;
+int sizMult2 = 2;
 Star[] bimbo = new Star[1000];
 ArrayList <Bullet> bullets;
 ArrayList <Asteroid> theAsteroids;
@@ -79,7 +79,7 @@ public void draw()
   	for(int i=0; i<bullets.size(); i++){
   		for(int j=0; j<theAsteroids.size(); j++){
   			dist = abs(dist((float)bullets.get(i).getX(),(float)bullets.get(i).getY(),(float)theAsteroids.get(j).getX(),(float)theAsteroids.get(j).getY()));
-  			if(dist<25*sizMult){
+  			if(dist<25*sizMult2){
   				theAsteroids.remove(j);
   				bullets.remove(i);
   				break;
@@ -88,7 +88,7 @@ public void draw()
   	}
   	for(int j=0; j<theAsteroids.size(); j++){
   		dist = abs(dist((float)bob.getX(),(float)bob.getY(),(float)theAsteroids.get(j).getX(),(float)theAsteroids.get(j).getY()));
-  		if(dist<20*sizMult){
+  		if(dist<20*sizMult2){
   			theAsteroids.remove(j);
   			bob.hyperSpace();
   			background(255,0,0);
