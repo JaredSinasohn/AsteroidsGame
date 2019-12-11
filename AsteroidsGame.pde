@@ -64,7 +64,7 @@ public void draw()
   	}
   	//spawning asteroids
   	Asteroid deimos = new Asteroid();
-  	if(theAsteroids.size()<5){
+  	if(theAsteroids.size()<10){
   		theAsteroids.add(deimos);
   	}
   	for(int i=0; i<theAsteroids.size(); i++){
@@ -75,11 +75,11 @@ public void draw()
   		//}
   	}
   	//checking collision between bullets and asteroids
-  	double dist;
+  	double dist1;
   	for(int i=0; i<bullets.size(); i++){
   		for(int j=0; j<theAsteroids.size(); j++){
-  			dist = abs(dist((float)bullets.get(i).getX(),(float)bullets.get(i).getY(),(float)theAsteroids.get(j).getX(),(float)theAsteroids.get(j).getY()));
-  			if(dist<25*sizMult2){
+  			dist1 = abs(dist((float)bullets.get(i).getX(),(float)bullets.get(i).getY(),(float)theAsteroids.get(j).getX(),(float)theAsteroids.get(j).getY()));
+  			if(dist1<25*sizMult2){
   				theAsteroids.remove(j);
   				bullets.remove(i);
   				break;
@@ -87,8 +87,8 @@ public void draw()
   		}
   	}
   	for(int j=0; j<theAsteroids.size(); j++){
-  		dist = abs(dist((float)bob.getX(),(float)bob.getY(),(float)theAsteroids.get(j).getX(),(float)theAsteroids.get(j).getY()));
-  		if(dist<20*sizMult2){
+  		dist1 = abs(dist((float)bob.getX(),(float)bob.getY(),(float)theAsteroids.get(j).getX(),(float)theAsteroids.get(j).getY()));
+  		if(dist1<20*sizMult2){
   			theAsteroids.remove(j);
   			bob.hyperSpace();
   			background(255,0,0);
